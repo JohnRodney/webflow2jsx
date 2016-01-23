@@ -1,4 +1,4 @@
-#include "parser.h"
+#include "jsx/parser.h"
 
 int main (int argc, char *argv[]) {
   JsxToHtml parser;
