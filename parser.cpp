@@ -1,5 +1,35 @@
 #include "parser.h"
 
+std::string JsxToHtml::AllFormatting(std::string line){
+  line = doBaseFormats(line);
+  line = closeTags(line);
+  return line;
+}
+
+void JsxToHtml::ParseDoc(){
+  if (htmlFile.is_open()) {
+    while (getline (htmlFile, line)) {
+      line = AllFormatting(line);
+      jsxFile << line <<endl;
+    }
+  }
+}
+
+void JsxToHtml::OpenFiles() {
+  htmlFile.open(htmlName.str().c_str());
+  jsxFile.open(jsxName.str().c_str());
+}
+
+void JsxToHtml::CloseFiles() {
+  jsxFile.close();
+  htmlFile.close();
+}
+
+void JsxToHtml::AssignFileNames(int argc, char *argv[]){
+  htmlName << argv[1]<<".html";
+  jsxName << argv[1]<<".jsx";
+}
+
 std::string JsxToHtml::ReplaceString(std::string subject, const std::string& search,
                           const std::string& replace) {
     size_t pos = 0;
@@ -35,28 +65,9 @@ std::string JsxToHtml::closeTags(std::string line) {
 int JsxToHtml::run(int argc, char *argv[]){
   if(argc < 2) { return 0; }
 
-  std::stringstream htmlName;
-  std::stringstream jsxName;
-
-  htmlName << argv[1]<<".html";
-  jsxName << argv[1]<<".jsx";
-
-  std::string line;
-  ifstream htmlFile;
-  ofstream jsxFile;
-
-  htmlFile.open(htmlName.str().c_str());
-  jsxFile.open(jsxName.str().c_str());
-
-  if (htmlFile.is_open()) {
-    while (getline (htmlFile, line)) {
-      line = doBaseFormats(line);
-      line = closeTags(line);
-      jsxFile << line <<endl;
-    }
-  }
-
-  jsxFile.close();
-  htmlFile.close();
+  AssignFileNames(argc, argv);
+  OpenFiles();
+  ParseDoc();
+  CloseFiles();
   return 0;
 }

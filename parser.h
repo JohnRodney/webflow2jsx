@@ -12,6 +12,11 @@ class JsxToHtml {
     std::string line;
     ifstream htmlFile;
     ofstream jsxFile;
+    void AssignFileNames(int argc, char *argv[]);
+    std::string AllFormatting(std::string line);
+    void OpenFiles();
+    void CloseFiles();
+    void ParseDoc();
 
   public:
     int run(int argc, char *argv[]);
