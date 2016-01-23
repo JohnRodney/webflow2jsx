@@ -14,14 +14,14 @@ class HtmlToJsx {
     std::string htmlName, jsxName;
     ifstream htmlFile;
     ofstream jsxFile;
-    void AssignFileNames(int argc, char *argv[]);
-    void AllFormatting(std::string &line);
-    void OpenFiles();
-    void CloseFiles();
-    void ParseDoc();
+    void assignFileNames(int argc, char *argv[]);
+    void allFormatting(std::string &line);
+    void openFiles();
+    void closeFiles();
+    void parseDoc();
     void doBaseFormats(std::string &line);
     void closeTags(std::string &line);
-    void ReplaceString(std::string& subject, const std::string& search, const std::string& replace);
+    void replaceString(std::string& subject, const std::string& search, const std::string& replace);
 
   public:
     int run(int argc, char *argv[]);
