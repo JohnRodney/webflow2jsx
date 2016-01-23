@@ -3,13 +3,15 @@
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include <string>
 
-using namespace std;
+using std::string;
+using std::ifstream;
+using std::ofstream;
 
-class JsxToHtml {
+class HtmlToJsx {
   private:
-    std::stringstream htmlName, jsxName;
-    std::string line;
+    std::string htmlName, jsxName;
     ifstream htmlFile;
     ofstream jsxFile;
     void AssignFileNames(int argc, char *argv[]);
