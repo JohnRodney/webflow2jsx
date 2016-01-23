@@ -1,7 +1,7 @@
 # Setup
 
 1. Clone the repo
-2. Make an alias to your directory like `alias webflow=~/path/to/main`
+2. Make an alias to your directory like `alias webflow="~/path/to/parser"`
 
 # Use
 
