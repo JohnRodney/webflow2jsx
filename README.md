@@ -10,6 +10,6 @@ Type the name of any html file while in that directory after the webflow command
 
 This will parse index html and create index.jsx with the changes needed to convert to more jsx like syntax.
 
-# Future
+# Future prespective
 
 Still alot of work to do as it expects your html file to exist and also expects it to already be properly formatted html.
